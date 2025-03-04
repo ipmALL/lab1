@@ -11,18 +11,30 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Налаштування відстеження GA4
+      // Базова конфігурація Google Analytics
       gtag('config', 'G-E654J66TS5');
-
-      // Симуляція User-ID (зазвичай отримується після авторизації користувача)
-      var userId = 'Purchasers'; // Тут має бути унікальний ID користувача
-      gtag('config', 'G-E654J66TS5', {
-          'user_id': Purchasers
-      });
     </script>
 </head>
 <body>
     <h1>Привет, мир!</h1>
     <p>Этот сайт создан для тестирования Google Analytics.</p>
+
+    <script>
+      // Перевіряємо, чи є User-ID у localStorage
+      let userId = localStorage.getItem('userId');
+      
+      // Якщо немає, створюємо новий унікальний ID
+      if (!userId) {
+          userId = 'user_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('userId', userId);
+      }
+
+      // Передаємо User-ID в Google Analytics
+      gtag('config', 'G-E654J66TS5', {
+          'user_id': userId
+      });
+
+      console.log("User-ID:", userId); // Для перевірки в консолі браузера
+    </script>
 </body>
 </html>
