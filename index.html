@@ -11,7 +11,14 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      // Налаштування відстеження GA4
       gtag('config', 'G-E654J66TS5');
+
+      // Симуляція User-ID (зазвичай отримується після авторизації користувача)
+      var userId = 'user_123456'; // Тут має бути унікальний ID користувача
+      gtag('config', 'G-E654J66TS5', {
+          'user_id': userId
+      });
     </script>
 </head>
 <body>
