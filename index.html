@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тестовый сайт</title>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E654J66TS5"></script>
     <script>
@@ -11,31 +12,29 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Базова конфігурація Google Analytics (запускається одразу)
+      // Базовая настройка Google Analytics
       gtag('config', 'G-E654J66TS5');
     </script>
 </head>
 <body>
-    <h1>Приasdfasыфвафывафываываываdfsdfasdfasвет, мир!</h1>
-    <p>Этот сайт соasdfфывфывфыздан для тестирования Google Analytics.</p>
+    <h1>Привет, мир!</h1>
+    <p>Этот сайт создан для тестирования событий Google Analytics.</p>
+
+    <!-- Кнопка для теста -->
+    <button id="testButton">Нажми меня</button>
 
     <script>
-      // Перевіряємо, чи є User-ID у localStorage
-      let userId = localStorage.getItem('userId');
-
-      // Якщо немає, створюємо новий унікальний ID
-      if (!userId) {
-          userId = 'user_' + Math.random().toString(36).substr(2, 9);
-          localStorage.setItem('userId', userId);
+      // Функция для отправки события в Google Analytics
+      function trackButtonClick() {
+          gtag('event', 'click', {
+              'event_category': 'Button',
+              'event_label': 'Test Button Clicked'
+          });
+          console.log("Событие отправлено: кнопка нажата!");
       }
 
-      // Передаємо User-ID у Google Analytics
-      gtag('config', 'G-E654J66TS5', {
-          'user_id': userId
-      }, { 'debug_mode':true });
-      gtag('config', 'G-E654J66TS5', { 'debug_mode':true });
-
-      console.log("User-ID отправлен в Google Analytics:", userId); // Для перевірки в консолі браузера
+      // Назначаем обработчик клика на кнопку
+      document.getElementById('testButton').addEventListener('click', trackButtonClick);
     </script>
 </body>
 </html>
