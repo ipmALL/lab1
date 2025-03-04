@@ -11,30 +11,30 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Базова конфігурація Google Analytics
+      // Базова конфігурація Google Analytics (запускається одразу)
       gtag('config', 'G-E654J66TS5');
     </script>
 </head>
 <body>
-    <h1>П1ривет, мир!</h1>
-    <p>Этот 11сqweqweайт создан для тестирования Google Analytics.</p>
+    <h1>Привет, мир!</h1>
+    <p>Этот сайт создан для тестирования Google Analytics.</p>
 
     <script>
       // Перевіряємо, чи є User-ID у localStorage
       let userId = localStorage.getItem('userId');
-      
+
       // Якщо немає, створюємо новий унікальний ID
       if (!userId) {
           userId = 'user_' + Math.random().toString(36).substr(2, 9);
           localStorage.setItem('userId', userId);
       }
 
-      // Передаємо User-ID в Google Analytics
+      // Передаємо User-ID у Google Analytics
       gtag('config', 'G-E654J66TS5', {
           'user_id': userId
       });
 
-      console.log("User-ID:", userId); // Для перевірки в консолі браузера
+      console.log("User-ID отправлен в Google Analytics:", userId); // Для перевірки в консолі браузера
     </script>
 </body>
 </html>
